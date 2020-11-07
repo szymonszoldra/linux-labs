@@ -15,6 +15,8 @@ int main() {
     switch (fork()) {
       case 0:
         execl("./first", "first", NULL);
+        perror("Error!\n");  // If it reach that line it means that something
+                             // went wrong.
         break;
       case -1:
         perror("fork error");
@@ -29,6 +31,9 @@ int main() {
 
   for (int i = 0; i < 3; i++) {
     processId = wait(&statusCode);
+    if (processId == -1) {
+      perror("Error!\n");
+    }
     printf("Proces %d zakonczyl sie z kodem %d\n", processId, statusCode);
   }
 
