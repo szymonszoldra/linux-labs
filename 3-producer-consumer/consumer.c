@@ -50,9 +50,9 @@ void run() {
 
     char c = *(mem.ptr);
     if (c == '\n') {
-      printf("[Consumer] Recievied char \"\\n\", sleep(%d)\n", wait_time);
+      printf("[Consumer] Received char \"\\n\", sleep(%d)\n", wait_time);
     } else {
-      printf("[Consumer] Recieved \"%c\",  sleep(%d)\n", c, wait_time);
+      printf("[Consumer] Received \"%c\",  sleep(%d)\n", c, wait_time);
     }
 
     sem_v(mem.semid, SEM_WRITE);
