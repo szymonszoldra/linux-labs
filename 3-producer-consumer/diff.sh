@@ -1,0 +1,1 @@
+diff dane_wejsciowe.txt wynik.txt
