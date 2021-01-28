@@ -15,12 +15,12 @@ int main() {
     switch (fork()) {
       case 0:
         execl("./first", "first", NULL);
-        perror("Error!\n");  // If it reach that line it means that something
-        exit(1);             // went wrong.
+        perror("Error!\n");
+        exit(EXIT_FAILURE);
         break;
       case -1:
         perror("fork error");
-        exit(1);
+        exit(EXIT_FAILURE);
       default:
         break;
     }
@@ -29,6 +29,7 @@ int main() {
   char cmd[30];
   pid_t pid = getpid();
   sprintf(cmd, "pstree -p %d", pid);
+
   if (pid == getpid()) {
     system(cmd);
   }
@@ -40,9 +41,9 @@ int main() {
     processId = wait(&statusCode);
     if (processId == -1) {
       perror("Error!\n");
-      exit(1);
+      exit(EXIT_FAILURE);
     }
-    printf("Proces %d zakonczyl sie z kodem %d\n", processId, statusCode);
+    printf("Process %d exit with code: %d\n", processId, statusCode);
   }
 
   return 0;

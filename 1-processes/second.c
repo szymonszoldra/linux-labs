@@ -8,7 +8,7 @@
  * created by the fork function. Then it display the process family tree.
  */
 
-void printProcessInfo() {
+void print_process_info() {
   printf("PID: %d ", getpid());
   printf("PPID: %d ", getppid());
   printf("UID: %d ", getuid());
@@ -16,7 +16,7 @@ void printProcessInfo() {
 }
 
 int main() {
-  printProcessInfo();
+  print_process_info();
 
   pid_t pid = getpid();
   char cmd[30];
@@ -38,6 +38,7 @@ int main() {
   if (pid == getpid()) {
     system(cmd);
   }
+
   sleep(1);
   return 0;
 }
